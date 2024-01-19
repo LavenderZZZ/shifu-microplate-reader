@@ -4,12 +4,12 @@ FROM golang:1.18-alpine
 # 设置工作目录
 WORKDIR /app
 
-# 复制Go模块依赖文件
-COPY go.mod ./
-COPY go.sum ./
+## 复制Go模块依赖文件
+#COPY go.mod ./
+#COPY go.sum ./
 
-# 下载Go模块依赖
-RUN go mod download
+## 下载Go模块依赖
+#RUN go mod download
 
 # 复制Go源代码
 COPY *.go ./
