@@ -5,11 +5,11 @@ FROM golang:1.18-alpine
 WORKDIR /app
 
 ## 复制Go模块依赖文件
-#COPY go.mod ./
+COPY go.mod ./
 #COPY go.sum ./
 
 ## 下载Go模块依赖
-#RUN go mod download
+RUN go mod download
 
 # 复制Go源代码
 COPY *.go ./
