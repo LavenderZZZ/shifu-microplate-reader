@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: microplate-reader
-          image: your-docker-hub-username/microplate-reader-app:latest
+          image: zaynzzy/microplate-reader-app
