@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microplate-reader-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microplate-reader
+  template:
+    metadata:
+      labels:
+        app: microplate-reader
+    spec:
+      containers:
+        - name: microplate-reader
+          image: your-docker-hub-username/microplate-reader-app:latest
