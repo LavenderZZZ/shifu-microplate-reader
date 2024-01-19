@@ -1,9 +1,11 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -19,10 +21,22 @@ func getMeasurement() ([][]float64, error) {
 	}
 	defer resp.Body.Close()
 
-	var matrix [][]float64
-	err = json.NewDecoder(resp.Body).Decode(&matrix)
+	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, err
+	}
+
+	lines := strings.Split(string(body), "\n")
+
+	matrix := make([][]float64, len(lines))
+	for i, line := range lines {
+		values := strings.Fields(line)
+		matrix[i] = make([]float64, len(values))
+		for j, value := range values {
+			if matrix[i][j], err = strconv.ParseFloat(value, 64); err != nil {
+				return nil, fmt.Errorf("parsing value %q: %v", value, err)
+			}
+		}
 	}
 
 	return matrix, nil
