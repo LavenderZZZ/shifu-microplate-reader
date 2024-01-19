@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: microplate-reader
-          image: zaynzzy/microplate-reader-app
+          image: zaynzzy/microplate-reader-app:v1
