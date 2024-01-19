@@ -60,7 +60,7 @@ func main() {
 			continue
 		}
 		average := calculateAverage(matrix)
-		fmt.Printf("Average measurement: %f\n", average)
+		fmt.Println("Average measurement: ", average)
 
 		time.Sleep(pollInterval * time.Second)
 	}
